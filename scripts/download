@@ -5,20 +5,20 @@ set -e
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
-version="4.1.2"
-url="https://build.nav.community/v${version}"
-tag="navcoin-4.1.2"
+version="3.2.2"
+url="https://github.com/folm/folm/releases/download/v${version}"
+tag="v3.2.2"
 
 if [ "${platform}" == "linux" ]; then
     if [ "${arch}" == "x86_64" ]; then
-        tarball_name="navcoin-${version}-x86_64-linux-gnu.tar.gz"
+        tarball_name="folm-${version}-x86_64-linux-gnu.tar.gz"
     elif [ "${arch}" == "x86_32" ]; then
-        tarball_name="navcoin-${version}-i686-pc-linux-gnu.tar.gz"
+        tarball_name="folm-${version}-i686-pc-linux-gnu.tar.gz"
     fi
 elif [ "${platform}" == "darwin" ]; then
-    tarball_name="navcoin-${version}-osx64.tar.gz"
+    tarball_name="folm-${version}-osx64.tar.gz"
 else
-    echo "Navcoin binary distribution not available for platform and architecture"
+    echo "Folmcoin binary distribution not available for platform and architecture"
     exit -1
 fi
 
@@ -29,7 +29,7 @@ download_bitcoind() {
 
     cd "${root_dir}/bin"
 
-    echo "Downloading bitcoin: ${binary_url}"
+    echo "Downloading folmcoin: ${binary_url}"
 
     is_curl=true
     if hash curl 2>/dev/null; then
@@ -46,20 +46,20 @@ download_bitcoind() {
             wget $binary_url
         fi
         if test -e "${tarball_name}"; then
-            echo "Unpacking bitcoin distribution"
+            echo "Unpacking folmcoin distribution"
             tar -xvzf $tarball_name
             if test $? -eq 0; then
-                ln -sf "navcoin-${version}/bin/navcoind"
+                ln -sf "folm-${version}/bin/folmd"
                 return;
             fi
         fi
     fi
-    echo "Navcoin binary distribution could not be downloaded"
+    echo "Folmcoin binary distribution could not be downloaded"
     exit -1
 }
 
 verify_download() {
-    echo "Verifying signatures of bitcoin download"
+    echo "Verifying signatures of folmcoin download"
     gpg --verify "${root_dir}/bin/SHA256SUMS.asc"
 
     if hash shasum 2>/dev/null; then
