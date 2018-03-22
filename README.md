@@ -1,18 +1,18 @@
 Bitcore Node
 ============
 
-A Navcoin full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services. At the minimum a node has an interface to [Navcoin full node](https://github.com/navcoindev/navcoin2) for more advanced address queries. Additional services can be enabled to make a node more useful such as exposing new APIs, running a block explorer and wallet service.
+A Folmcoin full node for building applications and services with Node.js. A node is extensible and can be configured to run additional services. At the minimum a node has an interface to [Folmcoin full node](https://github.com/folm/bitcore-node) for more advanced address queries. Additional services can be enabled to make a node more useful such as exposing new APIs, running a block explorer and wallet service.
 
 ## Install
 
 ```bashl
-sudo npm install --unsafe-perm -g git://github.com/navcoindev/bitcore-node.git
+sudo npm install --unsafe-perm -g git://github.com/folm/bitcore-node.git
 bitcore-node create mynode
 cd mynode
 bitcore-node start
 ```
 
-Note: For your convenience, we automate the download and compilation of the navcoind daemon. Upon npm install, the sources will be downloaded and built.
+Note: For your convenience, we automate the download and compilation of the folmcoind daemon. Upon npm install, the sources will be downloaded and built.
 
 ## Installing modules
 
@@ -53,7 +53,7 @@ sudo apt install mongodb-server
 Bitcore includes a Command Line Interface (CLI) for managing, configuring and interfacing with your Bitcore Node.
 
 ```bash
-bitcore-node create -d <navcoin-data-dir> mynode
+bitcore-node create -d <folmcoin-data-dir> mynode
 cd mynode
 bitcore-node install <service>
 bitcore-node install https://github.com/yourname/helloworld
