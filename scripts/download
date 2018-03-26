@@ -49,7 +49,7 @@ download_bitcoind() {
             echo "Unpacking folmcoin distribution"
             tar -xvzf $tarball_name
             if test $? -eq 0; then
-                ln -sf "folm-${version}/bin/folmd"
+                ln -sf "folm-${version}/folmd"
                 return;
             fi
         fi
